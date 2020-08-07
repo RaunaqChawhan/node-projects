@@ -33,6 +33,12 @@ const removeNote = (title) => {
         console.log(chalk.red.inverse('No note found!'));
     }
     
+};
+
+const listNotes = () => {
+    const notes = loadNotes();
+    console.log(chalk.blue('Your notes'));
+    notes.forEach((note) => console.log(note.title));
 }
 
 const saveNotes = (notes) => {
@@ -53,5 +59,6 @@ const loadNotes = () => {
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 };
