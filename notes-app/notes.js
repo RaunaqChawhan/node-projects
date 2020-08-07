@@ -8,9 +8,13 @@ const getNotes = () => {
 const addNote = (title, body) => {
     const notes = loadNotes();
 
-    const duplicateNotes = notes.filter((note) => note.title === title);
+    // const duplicateNotes = notes.filter((note) => note.title === title);
+    //suppose we have 1000 notes, filter will loop through all the notes even if it has found a duplicate at position 1.
+    //therefore using find method that will stop execution as soon as it finds the first match
+    const duplicateNote = notes.find((note) => note.title === title);
 
-    if(duplicateNotes.length === 0) {
+    // if(duplicateNotes.length === 0) {
+    if(!duplicateNote) {
         notes.push({
             title: title,
             body: body
