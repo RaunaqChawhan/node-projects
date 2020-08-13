@@ -1,20 +1,10 @@
+const path = require('path');
 const express = require('express');
 
 const app = express();
+const publicDirPath = path.join(__dirname, '../public');
 
-app.get('', (req, res) => {
-    res.send('<h1>Hello, root page!</h1>');
-});
-
-app.get('/help', (req, res) => {
-    res.send({
-        msg: 'Express detects an array and an object and stringifies to json to send it to requester'
-    });
-});
-
-app.get('/about', (req, res) => {
-    res.send('About page');
-});
+app.use(express.static(publicDirPath));
 
 app.get('/weather', (req, res) => {
     res.send('Weather display page');
