@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>About</title>
+        <link rel="icon" href="/img/weather.png">
         <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body>
-        {{>header}}
-        <h3>About Page served from template engine</h3>
-        <img src="/img/robot.png">
+        <div class="main-content">
+            {{>header}}
+            <h3>About Page served from template engine</h3>
+            <img class="portrait" src="/img/robot.png">
+        </div>
         {{>footer}}
     </body>
 </html>
