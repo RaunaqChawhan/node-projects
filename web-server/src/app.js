@@ -45,6 +45,14 @@ app.get('/weather', (req, res) => {
     res.send('Weather display page');
 });
 
+app.get('/help/*', (req, res) => {
+    res.send('Help article for the requested item is not available.');  // '/help/*' it matches all the routes that are not defined after /help/____
+})
+
+app.get('*', (req, res) => {    // '*' wildcard character to match all the routes that are not defined above
+    res.send('404 Page');
+})
+
 app.listen(3000, () => {
     console.log('Server is up and running on port 3000');
 })
