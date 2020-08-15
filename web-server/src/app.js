@@ -7,7 +7,7 @@ const app = express();
 // define paths for express config
 const publicDirPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
-const partialsPath = path.join(__dirname, '../templates/partials')
+const partialsPath = path.join(__dirname, '../templates/partials');
 
 // by default, hbs looks for views folder at the root of the project to serve as pages
 // in order to use a different directory and at a location other than root, set the 'views' to new path of that directory
@@ -46,11 +46,20 @@ app.get('/weather', (req, res) => {
 });
 
 app.get('/help/*', (req, res) => {
-    res.send('Help article for the requested item is not available.');  // '/help/*' it matches all the routes that are not defined after /help/____
+    // res.send('Help article for the requested item is not available.');  // '/help/*' it matches all the routes that are not defined after /help/____
+    res.render('errorpage', {
+        error: 'Help article for the requested item is not available.',
+        title: '404 Page',
+        name: 'John'
+    })
 })
 
 app.get('*', (req, res) => {    // '*' wildcard character to match all the routes that are not defined above
-    res.send('404 Page');
+    res.render('errorpage', {
+        error: 'Page not found!',
+        title: '404 Page',
+        name: 'John'
+    })
 })
 
 app.listen(3000, () => {
