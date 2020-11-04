@@ -6,7 +6,7 @@ const Table = require("cli-table");
 const axios = require("axios");
 const yargs = require('yargs');
 
-const table = new Table({
+const dataTable = new Table({
     head: ["Company Name", "Job Role", "Location", "Full Time", "Job Description"],
     chars: { 'top': '' , 'top-mid': '' , 'top-left': '' , 'top-right': ''
          , 'bottom': '' , 'bottom-mid': '' , 'bottom-left': '' , 'bottom-right': ''
@@ -27,12 +27,12 @@ yargs.command({
         axios.get("https://jobs.github.com/positions.json?markdown=true").
         then(response => {
             response.data.forEach(jobData => {
-                table.push(
+                dataTable.push(
                     [jobData.company, jobData.title, jobData.location, jobData.type, jobData.url]
                     );
                 });
                 
-                console.log(table.toString());
+                console.log(dataTable.toString());
             });
     }
 });
@@ -52,12 +52,12 @@ yargs.command({
         axios.get(`https://jobs.github.com/positions.json?markdown=true&location=${argv.location}`).
         then(response => {
             response.data.forEach(jobData => {
-                table.push(
+                dataTable.push(
                     [jobData.company, jobData.title, jobData.location, jobData.type, jobData.url]
                     );
                 });
 
-                console.log(table.toString());
+                console.log(dataTable.toString());
             });
     }
 });
@@ -77,12 +77,12 @@ yargs.command({
         axios.get(` https://jobs.github.com/positions.json?markdown=true&search=${argv.technology}`).
         then(response => {
             response.data.forEach(jobData => {
-                table.push(
+                dataTable.push(
                     [jobData.company, jobData.title, jobData.location, jobData.type, jobData.url]
                     );
                 });
                 
-                console.log(table.toString());
+                console.log(dataTable.toString());
             });
     }
 });
@@ -107,12 +107,12 @@ yargs.command({
         axios.get(` https://jobs.github.com/positions.json?markdown=true&location=${argv.location}&search=${argv.technology}`).
         then(response => {
             response.data.forEach(jobData => {
-                table.push(
+                dataTable.push(
                     [jobData.company, jobData.title, jobData.location, jobData.type, jobData.url]
                     );
                 });
                 
-                console.log(table.toString());
+                console.log(dataTable.toString());
             });
     }
 })
